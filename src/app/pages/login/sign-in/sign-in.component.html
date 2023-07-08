@@ -1,0 +1,36 @@
+<div class="sign-in">
+  <h2 class="sign-in__title">Sign In</h2>
+
+  <form class="sign-in__form" (submit)="submit()" [formGroup]="signInGroup" autocomplete="off">
+    <div class="sign-in__control">
+      <mat-form-field appearance="fill">
+        <mat-label>Login</mat-label>
+        <input matInput formControlName="login" placeholder="" />
+        <mat-icon matSuffix>perm_identity</mat-icon>
+        <mat-hint>At least 4 characters</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="sign-in__control">
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="" />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-hint>At least 6 characters</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="sign-in__save">
+      <mat-checkbox formControlName="save" labelPosition="before">Save me</mat-checkbox>
+    </div>
+
+    <div class="sign-in__control sign-in__control--spaces">
+      <button mat-raised-button [disabled]="signInGroup.invalid" color="primary">Sign In</button>
+    </div>
+
+    <div class="sign-up-container">
+      <span class="sign-up-container__label"> Don't have an account yet? </span>
+      <span class="sign-up-container__link" routerLink="/sign-up"> Sign Up </span>
+    </div>
+  </form>
+</div>
