@@ -1,0 +1,34 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as material;
+
+@include material.core();
+
+$app-primary: material.define-palette(material.$green-palette, 900);
+$app-accent: material.define-palette(material.$deep-purple-palette, A200);
+$app-warn: material.define-palette(material.$red-palette);
+// extra Colors
+$custom-success: material.define-palette(material.$green-palette);
+$custom-danger: material.define-palette(material.$orange-palette);
+
+$custom-theme: material.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+@include material.all-component-themes($custom-theme);
+
+.mat-success {
+  background-color: material.get-color-from-palette($custom-success, 500);
+  color: material.get-color-from-palette($custom-success, 500-contrast);
+}
+
+.mat-danger {
+  background-color: material.get-color-from-palette($custom-danger, 500);
+  color: material.get-color-from-palette($custom-danger, 500-contrast);
+}
