@@ -29,7 +29,7 @@ export class SignInComponent {
   private _createForm(): void {
     this.signInGroup = this._fb.group({
       login: ['', this._loginService.getLoginValidatorList()],
-      password: ['', this._loginService.getLoginValidatorList()],
+      password: ['', this._loginService.getPasswordValidatorList()],
       save: [true],
     });
   }
