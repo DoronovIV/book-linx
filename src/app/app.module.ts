@@ -8,10 +8,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
-import { AuthorizationDialogModule } from './ui/authorization-popup/authorization-dialog.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { HomeComponent } from './pages/home/home.component';
-import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],

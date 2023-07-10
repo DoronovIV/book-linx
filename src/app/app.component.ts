@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from './pages/login/services/authorization.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthorizationDialogComponent } from './ui/authorization-popup/authorization-dialog.component';
 
 @Component({
   selector: 'app-root',

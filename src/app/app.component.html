@@ -11,28 +11,3 @@
   <div class="horizontal-line"></div>
   <router-outlet></router-outlet>
 </div>
-
-<!--
-
-  <div class="container">
-  <ng-container [ngSwitch]="authorized">
-    <ng-container *ngSwitchCase="true">
-      <div class="header-container">
-        <div>
-          <div class="home-button" routerLink="/"></div>
-        </div>
-
-        <ng-container *ngIf="!authorized">
-          <div class="sign-in-button" routerLink="/sign-in">Sign In</div>
-        </ng-container>
-      </div>
-      <div class="horizontal-line"></div>
-      <router-outlet></router-outlet>
-    </ng-container>
-    <ng-container *ngSwitchCase="false">
-      <app-authorization-dialog></app-authorization-dialog>
-    </ng-container>
-  </ng-container>
-</div>
-
--->
