@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from './pages/login/services/authorization.service';
-import { AuthorizationToken } from './model/auxiliary/authorization-token.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthorizationDialogComponent } from './ui/authorization-popup/authorization-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,11 @@ import { AuthorizationToken } from './model/auxiliary/authorization-token.interf
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private readonly _authorizationService: AuthorizationService) {}
-
   public title = 'book-linx';
 
   public static isAuthorized = false;
+
+  constructor(private readonly _authorizationService: AuthorizationService) {}
 
   public get authorized(): Boolean {
     if (!AppComponent.isAuthorized) {

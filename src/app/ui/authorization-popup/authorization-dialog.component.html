@@ -1,0 +1,19 @@
+<div class="dialog-container">
+  <div class="dialog">
+    <h1 class="dialog__title" mat-dialog-title>Welcome to our web-site</h1>
+    <div class="dialog__body" mat-dialog-content>
+      We have noticed that you haven't been registered yet. Before we proceed, please sign in.
+    </div>
+    <div mat-dialog-actions>
+      <button
+        class="dialog__controls"
+        mat-raised-button
+        color="primary"
+        mat-dialog-close
+        (click)="locateToSignIn()"
+      >
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>
