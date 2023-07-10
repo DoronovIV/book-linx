@@ -8,22 +8,9 @@ import { Validators } from '@angular/forms';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private readonly _http: HttpClient) {}
 
-  public signIn(user: User): Observable<void> {
-    const url = `sign-in`;
-
-    return this._http.post<void>(url, {
-      user,
-    });
-  }
-
-  public signUp(user: User): Observable<void> {
-    const url = `sign-up`;
-
-    return this._http.post<void>(url, {
-      user,
-    });
+  public signIn(user: User): void {
+    
   }
 
   public getLoginValidatorList() {

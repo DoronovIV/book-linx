@@ -8,15 +8,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
+import { AuthorizationPopupComponent } from './ui/authorization-popup/authorization-popup.component';
+import { AuthorizationPopupModule } from './ui/authorization-popup/authorization-popup.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AuthorizationPopupComponent],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AuthorizationPopupModule
   ],
   providers: [HTTP_REQUEST_PROVIDER],
   bootstrap: [AppComponent],
