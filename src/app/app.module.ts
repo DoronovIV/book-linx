@@ -19,7 +19,7 @@ import { AuthorizationPopupModule } from './ui/authorization-popup/authorization
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AuthorizationPopupModule
+    AuthorizationPopupModule,
   ],
   providers: [HTTP_REQUEST_PROVIDER],
   bootstrap: [AppComponent],
