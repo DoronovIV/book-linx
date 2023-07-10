@@ -7,6 +7,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   providedIn: 'root',
 })
 export class AuthorizationService {
+  private readonly _storageKey = 'at';
+
   constructor(private readonly _storingService: LocalStorageService) {}
 
   public addToken(usr: User | null): void {
@@ -20,11 +22,11 @@ export class AuthorizationService {
         expirationDate: tomorrow,
       };
 
-      this._storingService.setForce('token', JSON.stringify(token));
+      this._storingService.setForce(this._storageKey, token);
     }
   }
 
   public getToken(): AuthorizationToken | null {
-    return this._storingService.get<AuthorizationToken>('token');
+    return this._storingService.get<AuthorizationToken>(this._storageKey);
   }
 }

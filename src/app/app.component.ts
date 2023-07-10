@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from './pages/login/services/authorization.service';
+import { AuthorizationToken } from './model/auxiliary/authorization-token.interface';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,17 @@ export class AppComponent {
   public static isAuthorized = false;
 
   public get authorized(): Boolean {
-    const token = this._authorizationService.getToken();
-    const dateNow = new Date();
+    if (!AppComponent.isAuthorized) {
+      let token = this._authorizationService.getToken();
+      const dateNow = new Date();
 
-    if (token) {
-      if (dateNow.getTime() > token.expirationDate.getTime()) {
-        return true;
+      if (token) {
+        if (new Date(token.expirationDate).getTime() > dateNow.getTime()) {
+          AppComponent.isAuthorized = true;
+        }
       }
     }
 
-    return false;
+    return AppComponent.isAuthorized;
   }
 }
