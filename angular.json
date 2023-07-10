@@ -56,6 +56,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "./src/proxy/proxy.config.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "book-linx:build:production"

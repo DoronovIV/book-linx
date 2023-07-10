@@ -23,19 +23,18 @@ export class SignInComponent {
     const user: User = this.signInGroup.getRawValue();
     console.log(user);
 
-    this._loginService
-      .signIn(user)
-      .pipe(
-        tap((response) => {
-          console.log('response:', response);
-        }),
-        catchError((err: HttpErrorResponse) => {
-          console.log(err.message);
+    this._loginService.signIn(user)
+    .pipe(
+      tap((response) => {
+        console.log('response:', response);
+      }),
+      catchError((err: HttpErrorResponse) => {
+        console.log(err.message);
 
-          return EMPTY;
-        }),
-      )
-      .subscribe();
+        return EMPTY;
+      }),
+    )
+    .subscribe();
   }
 
   private _createForm(): void {
