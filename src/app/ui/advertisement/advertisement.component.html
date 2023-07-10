@@ -1,1 +1,20 @@
-<p>advertisement works!</p>
+<div class="ad-container">
+  <div [ngSwitch]="viewType">
+    <div *ngSwitchCase="'catalog'">
+      <ng-container *ngTemplateOutlet="catalogView"> </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #catalogView>
+  <div class="ad-catalog">
+    <h3 class="ad-catalog__title">{{ ad.title }}</h3>
+    <div class="ad-catalog__body">
+      <p class="ad-catalog__description">{{ ad.description }}</p>
+    </div>
+    <div class="ad-catalog__image-container">
+      <img class="ad-catalog__image" src="{{ ad.imagePathList[0] }}" alt="{{ ad.id }}" />
+    </div>
+    <div class="ad-catalog__price">{{ ad.price }}</div>
+  </div>
+</ng-template>
