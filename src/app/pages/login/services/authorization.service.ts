@@ -23,4 +23,8 @@ export class AuthorizationService {
       this._storingService.setForce('token', JSON.stringify(token));
     }
   }
+
+  public getToken(): AuthorizationToken | null {
+    return this._storingService.get<AuthorizationToken>('token');
+  }
 }
