@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
 import { Advertisement } from 'src/app/model/main/advertisement.interface';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
+import { AdvertisementImage } from 'src/app/types/advertisement-extensions.type';
 import { AuthorizationDialogComponent } from 'src/app/ui/authorization-dialog/authorization-dialog.component';
 
 @Component({
@@ -12,7 +13,7 @@ import { AuthorizationDialogComponent } from 'src/app/ui/authorization-dialog/au
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public adList: Advertisement[] = [];
+  public adList: AdvertisementImage[] = [];
 
   public get authorized() {
     return AppComponent.isAuthorized;
