@@ -1,0 +1,29 @@
+functionality list:
+
+1. user-site
+
+- no registration page (was not mentioned in the task, would be added if spare time occurs)
+- localStorage service multiple copies that would use different keys. this will allow me to add authorization token -
+  an object that stores some user data as well as expiration date.
+- commence user page minimalistic layout. for minimal iteration it shall contain two buttons: favorites and log-out.
+
+2. product-site
+
+- make a module of an advertisement with a respective component. configure it's view according to its model.
+- make another component that will control advertisement list layout according to the couple of denoted preferences.
+- filter-component: a subcomponent for filter parameter input (select), a ket input string. (russian fake store angular project guide).
+
+3. back to user-site
+
+- make a link to the ads list page but with provided list of favorites from local storage.
+
+- add new module for the user comments implementation.
+
+
+
+
+today 10/07:
+
+- login page [x]
+- header (adjust color, push 'sign-in' to the right, add user-page link)
+- make a modal that filters unregistered user
