@@ -1,1 +1,7 @@
 <ng-container *ngIf="!authorized"> </ng-container>
+
+<div class="ads">
+  <ng-container *ngFor="let ad of adList">
+    <app-advertisement> </app-advertisement>
+  </ng-container>
+</div>
