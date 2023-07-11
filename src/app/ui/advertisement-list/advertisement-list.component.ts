@@ -5,6 +5,8 @@ import {
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { priceInterval } from './validation/price.validator';
+import { Filter } from './model/filter.interface';
 
 @Component({
   selector: 'app-advertisement-list',
@@ -20,6 +22,13 @@ export class AdvertisementListComponent implements OnInit {
 
   public filterGroup!: FormGroup;
 
+  public submit(): void {
+    const filter: Filter = this.filterGroup.getRawValue();
+    console.log(filter);
+
+    //filter.apply
+  }
+
   constructor(private readonly _fb: FormBuilder, private readonly _filterService: FilterService) {}
 
   public ngOnInit(): void {
@@ -27,14 +36,19 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   private _createForm() {
-    this.filterGroup = this._fb.group({
-      lowerPrice: ['', this._filterService.getLowerPriceValidatorList()],
-      higherPrice: ['', this._filterService.getHigherPriceValidatorList()],
-      oneRoom: [false],
-      twoRooms: [false],
-      threeRooms: [false],
-      fourRooms: [false],
-      area: ['', this._filterService.getAreaValidatorList()],
-    });
+    this.filterGroup = this._fb.group(
+      {
+        lowerPrice: [['', this._filterService.getPriceValidatorList()]],
+        higherPrice: [['', this._filterService.getPriceValidatorList()]],
+        oneRoom: [[false]],
+        twoRooms: [[false]],
+        threeRooms: [[false]],
+        fourRooms: [[false]],
+        area: [['', this._filterService.getAreaValidatorList()]],
+      },
+      {
+        validators: priceInterval,
+      },
+    );
   }
 }

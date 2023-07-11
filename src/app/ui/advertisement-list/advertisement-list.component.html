@@ -1,9 +1,28 @@
 <div class="container">
-  <div class="filter">
+  <form class="filter" (submit)="submit()" [formGroup]="filterGroup">
     <div class="filter__price">
-        <input class="filter__price--lower" type="number" />
+      <input class="filter__price--lower" type="number" min="0" formControlName="lowerPrice" />
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <input class="filter__price--higher" type="number" min="0" formControlName="higherPrice" />
     </div>
-  </div>
+    <div class="filter__room-area">
+      <p class="filter__room-area--label">Number of rooms</p>
+      <div class="filter__rooms">
+        <mat-checkbox color="primary" class="filter__rooms--one" formControlName="oneRoom"
+          >One room</mat-checkbox
+        >
+        <mat-checkbox color="primary" class="filter__rooms--two" formControlName="twoRooms"
+          >Two rooms</mat-checkbox
+        >
+        <mat-checkbox color="primary" class="filter__rooms--three" formControlName="threeRooms"
+          >Three rooms</mat-checkbox
+        >
+        <mat-checkbox color="primary" class="filter__rooms--four" formControlName="fourRooms"
+          >Four rooms</mat-checkbox
+        >
+      </div>
+    </div>
+  </form>
   <div class="ads">
     <ng-container *ngFor="let ad of adList">
       <div

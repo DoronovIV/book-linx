@@ -4,7 +4,7 @@
 
 @include material.core();
 
-$app-primary: material.define-palette(material.$green-palette, 900);
+$app-primary: material.define-palette(material.$blue-grey-palette, 900);
 $app-accent: material.define-palette(material.$deep-purple-palette, A200);
 $app-warn: material.define-palette(material.$red-palette);
 // extra Colors

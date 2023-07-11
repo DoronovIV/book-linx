@@ -1,3 +1,7 @@
+input {
+  margin: 10px;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -11,14 +15,6 @@
   gap: 28px;
 }
 
-.filter {
-  display: flex;
-  flex-direction: column;
-
-  width: 20%;
-  margin: 0 60px;
-}
-
 .ad-container--grid {
   width: 28%;
 }
@@ -26,4 +22,47 @@
 .ad-container--center {
   margin: 0 auto;
   width: 50%;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+
+  width: 20%;
+  margin: 40px 60px;
+
+  &__price {
+    display: flex;
+    gap: 10px;
+
+    &--lower,
+    &--higher {
+      width: 120px;
+      height: 24px;
+
+      font-size: 18px;
+      padding: 0 10px;
+
+      border: 1px solid dimgrey;
+      border-radius: 3px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+  }
+
+  &__room-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 40px;
+  }
+
+  &__rooms {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 20px;
+    user-select: none;
+  }
 }
