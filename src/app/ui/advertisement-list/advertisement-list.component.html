@@ -1,12 +1,19 @@
-<div class="ads">
-  <ng-container *ngFor="let ad of adList">
-    <div
-      [ngClass]="{
-        'ad-container--grid': adListViewType === 'grid',
-        'ad-container--center': adListViewType === 'center'
-      }"
-    >
-      <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>
+<div class="container">
+  <div class="filter">
+    <div class="filter__price">
+        <input class="filter__price--lower" type="number" />
     </div>
-  </ng-container>
+  </div>
+  <div class="ads">
+    <ng-container *ngFor="let ad of adList">
+      <div
+        [ngClass]="{
+          'ad-container--grid': adListViewType === 'grid',
+          'ad-container--center': adListViewType === 'center'
+        }"
+      >
+        <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>
+      </div>
+    </ng-container>
+  </div>
 </div>

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
-import { AdvertisementListComponent } from './ui/advertisement-list/advertisement-list.component';
 
 @NgModule({
   declarations: [AppComponent],

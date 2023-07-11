@@ -1,18 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
 .ads {
-    margin: 100px auto;
-    width: 80%;
-  
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-  }
-  
-  .ad-container--grid {
-    width: 32%;
-  }
-  
-  .ad-container--center {
-    margin: 0 auto;
-    width: 50%;
-  }
-  
+  margin: 40px auto;
+  width: 80%;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+
+  width: 20%;
+  margin: 0 60px;
+}
+
+.ad-container--grid {
+  width: 28%;
+}
+
+.ad-container--center {
+  margin: 0 auto;
+  width: 50%;
+}
