@@ -29,13 +29,20 @@
   gap: 60px;
 }
 
-.home-button {
+.header-button {
   width: 48px;
   height: 48px;
 
   cursor: pointer;
-  background-image: url('../assets/logo/logo-blue.svg');
   background-size: contain;
+}
+
+.home-button {
+  background-image: url('../assets/logo/main-logo.svg');
+}
+
+.account-button {
+  background-image: url('../assets/logo/account.svg');
 }
 
 .sign-in-button {

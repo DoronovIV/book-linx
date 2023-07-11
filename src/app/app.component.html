@@ -2,11 +2,15 @@
   <div class="header-container">
     <div class="header">
       <div>
-        <div class="home-button" routerLink="/"></div>
+        <div class="header-button home-button" routerLink="/"></div>
       </div>
 
       <ng-container *ngIf="!authorized">
         <div class="sign-in-button" routerLink="/sign-in">Sign In</div>
+      </ng-container>
+
+      <ng-container *ngIf="authorized">
+        <div class="header-button account-button"></div>
       </ng-container>
     </div>
     <div class="horizontal-line"></div>

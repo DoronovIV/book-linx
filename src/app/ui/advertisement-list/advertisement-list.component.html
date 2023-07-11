@@ -1,0 +1,12 @@
+<div class="ads">
+  <ng-container *ngFor="let ad of adList">
+    <div
+      [ngClass]="{
+        'ad-container--grid': adListViewType === 'grid',
+        'ad-container--center': adListViewType === 'center'
+      }"
+    >
+      <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>
+    </div>
+  </ng-container>
+</div>

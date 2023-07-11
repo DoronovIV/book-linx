@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { AdvertisementImage, AdvertisementView } from 'src/app/types/advertisement-extensions.type';
+import {
+  AdvertisementImage,
+  AdvertisementView,
+} from 'src/app/model/auxiliary/advertisement-extensions.type';
 
 @Component({
   selector: 'app-advertisement',

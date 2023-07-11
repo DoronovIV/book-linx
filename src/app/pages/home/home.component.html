@@ -1,9 +1,6 @@
-<ng-container *ngIf="!authorized"> </ng-container>
+<ng-container *ngIf="!authorized"></ng-container>
 
-<div class="ads">
-  <ng-container *ngFor="let ad of adList">
-    <div class="ad-container--grid">
-      <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>
-    </div>
-  </ng-container>
-</div>
+<app-advertisement-list
+  [adList]="commonAdvertisementList"
+  [adListViewType]="'grid'"
+></app-advertisement-list>

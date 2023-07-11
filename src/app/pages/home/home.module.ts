@@ -5,9 +5,10 @@ import { AuthorizationDialogModule } from 'src/app/ui/authorization-dialog/autho
 import { AppComponent } from 'src/app/app.component'; // actually used;
 import { HomeRoutingModule } from './home-routing.module';
 import { AdvertisementModule } from 'src/app/ui/advertisement';
+import { AdvertisementListModule } from 'src/app/ui/advertisement-list/advertisement-list.module';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, AuthorizationDialogModule, HomeRoutingModule, AdvertisementModule],
+  imports: [CommonModule, AuthorizationDialogModule, HomeRoutingModule, AdvertisementListModule],
 })
 export class HomeModule {}

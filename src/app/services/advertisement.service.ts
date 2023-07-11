@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, delay, map } from 'rxjs';
 import { Advertisement } from '../model/main/advertisement.interface';
-import { AdvertisementImage } from '../types/advertisement-extensions.type';
+import { AdvertisementImage } from '../model/auxiliary/advertisement-extensions.type';
 
 @Injectable({
   providedIn: 'root',
