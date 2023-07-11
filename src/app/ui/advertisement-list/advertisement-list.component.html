@@ -1,9 +1,27 @@
 <div class="container">
-  <form class="filter" (submit)="submit()" [formGroup]="filterGroup">
+  <form class="filter" (submit)="submit()" [formGroup]="filterGroup" autocomplete="off">
     <div class="filter__price">
-      <input class="filter__price--lower" type="number" min="0" formControlName="lowerPrice" />
+      <mat-form-field>
+        <mat-label>From</mat-label>
+        <input
+          matInput
+          class="filter__price--lower"
+          type="number"
+          min="0"
+          formControlName="lowerPrice"
+        />
+      </mat-form-field>
       <mat-icon matSuffix>attach_money</mat-icon>
-      <input class="filter__price--higher" type="number" min="0" formControlName="higherPrice" />
+      <mat-form-field>
+        <mat-label>To</mat-label>
+        <input
+          matInput
+          class="filter__price--higher"
+          type="number"
+          min="0"
+          formControlName="higherPrice"
+        />
+      </mat-form-field>
     </div>
     <div class="filter__room-area">
       <p class="filter__room-area--label">Number of rooms</p>
@@ -21,6 +39,21 @@
           >Four rooms</mat-checkbox
         >
       </div>
+    </div>
+    <div class="filter__area">
+      <mat-icon matSuffix>filter_2</mat-icon>
+      <mat-form-field>
+        <mat-label class="filter__area--sign">Area</mat-label>
+        <input
+          class="filter__area--input"
+          type="number"
+          min="0"
+          max="1000"
+          matInput
+          formControlName="area"
+          placeholder="m²"
+        />
+      </mat-form-field>
     </div>
   </form>
   <div class="ads">

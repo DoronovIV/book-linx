@@ -11,6 +11,6 @@ export class FilterService {
   }
 
   public getAreaValidatorList() {
-    return [[Validators.maxLength(3)]];
+    return [Validators.maxLength(3)];
   }
 }

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { LoginService } from '../services/login.service';
-import { EMPTY, catchError, tap } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
