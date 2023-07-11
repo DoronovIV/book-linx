@@ -2,6 +2,8 @@
 
 <div class="ads">
   <ng-container *ngFor="let ad of adList">
-    <app-advertisement (ad)="(ad)" (viewType)="('catalog')"> </app-advertisement>
+    <div class="ad-container--grid">
+      <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>
+    </div>
   </ng-container>
 </div>

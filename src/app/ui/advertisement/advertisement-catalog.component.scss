@@ -2,9 +2,13 @@
   width: 100%;
 }
 
+.ad-container {
+}
+
 .ad-catalog {
+  width: 100%;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px;
 
   background-color: white;
   border: 1px solid #dedede;
@@ -14,12 +18,28 @@
     margin: 0;
     margin-bottom: 10px;
     font-size: 26px;
-    max-width: 200px;
-    max-height: 60px;
+    width: 100%;
+    height: 60px;
+
+    color: navy;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: pre-line;
     word-break: break-word;
+  }
+
+  &__description-container {
+    overflow: hidden;
+  }
+
+  &__description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: pre-wrap;
+
+    color: dimgrey;
   }
 
   &__body {
@@ -27,8 +47,22 @@
     flex-direction: column;
   }
 
+  &__image-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__image {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    aspect-ratio: 6 / 4;
+  }
+
   &__price {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }

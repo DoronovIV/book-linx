@@ -1,13 +1,15 @@
 <div class="container">
   <div class="header-container">
-    <div>
-      <div class="home-button" routerLink="/"></div>
-    </div>
+    <div class="header">
+      <div>
+        <div class="home-button" routerLink="/"></div>
+      </div>
 
-    <ng-container *ngIf="!authorized">
-      <div class="sign-in-button" routerLink="/sign-in">Sign In</div>
-    </ng-container>
+      <ng-container *ngIf="!authorized">
+        <div class="sign-in-button" routerLink="/sign-in">Sign In</div>
+      </ng-container>
+    </div>
+    <div class="horizontal-line"></div>
   </div>
-  <div class="horizontal-line"></div>
   <router-outlet></router-outlet>
 </div>
