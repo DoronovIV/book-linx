@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 @NgModule({
-  declarations: [AdvertisementListComponent],
+  declarations: [AdvertisementListComponent, FilterPipe],
   imports: [
     CommonModule,
     AdvertisementModule,

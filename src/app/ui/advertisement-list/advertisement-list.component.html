@@ -57,7 +57,7 @@
     </div>
   </form>
   <div class="ads">
-    <ng-container *ngFor="let ad of adList">
+    <ng-container *ngFor="let ad of adList | filter : filterInstance">
       <div
         [ngClass]="{
           'ad-container--grid': adListViewType === 'grid',

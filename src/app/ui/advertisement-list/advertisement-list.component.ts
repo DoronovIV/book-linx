@@ -9,6 +9,7 @@ import { priceInterval } from './validation/price.validator';
 import { Filter } from './model/filter.interface';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 @Component({
   selector: 'app-advertisement-list',
@@ -24,11 +25,10 @@ export class AdvertisementListComponent implements OnInit {
 
   public filterGroup!: FormGroup;
 
-  public submit(): void {
-    const filter: Filter = this.filterGroup.getRawValue();
-    console.log(filter);
+  public filterInstance!: Filter;
 
-    //filter.apply
+  public submit(): void {
+    this.filterInstance = this.filterGroup.getRawValue();
   }
 
   constructor(private readonly _fb: FormBuilder, private readonly _filterService: FilterService) {}

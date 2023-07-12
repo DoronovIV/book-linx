@@ -11,7 +11,7 @@ import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
 import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, FilterPipe],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
