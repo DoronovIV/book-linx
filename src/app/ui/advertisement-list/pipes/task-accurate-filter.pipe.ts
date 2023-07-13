@@ -1,12 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { AdvertisementExtended } from '../../../model/auxiliary/advertisement-extensions.type';
+import {
+  AdvertisementExtended,
+  AdvertisementUI,
+} from '../../../model/auxiliary/advertisement-extensions.type';
 import { TaskFilter } from '../model/task-filter.interface';
 
 @Pipe({
   name: 'taskfilter',
 })
 export class TaskAccurateFilterPipe implements PipeTransform {
-  transform(ads: AdvertisementExtended[], filter: TaskFilter): AdvertisementExtended[] {
+  transform(ads: AdvertisementUI[], filter: TaskFilter): AdvertisementUI[] {
     return ads.filter((ad) => {
       const numberTerms: boolean[] = [false, false, false];
 
