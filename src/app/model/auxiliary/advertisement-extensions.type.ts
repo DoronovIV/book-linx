@@ -4,4 +4,5 @@ export type AdvertisementView = 'catalog' | 'page';
 export type AdvertisementListView = 'center' | 'grid';
 export type AdvertisementImage = Advertisement & {
   imagePathList: string[];
+  address: string;
 };

@@ -56,12 +56,15 @@
       </mat-form-field>
     </div>
   </form>
+  <div class="list-view-control" (click)="toggleListView()">
+    <mat-icon matSuffix> {{ view === 'center' ? 'grid_on' : 'crop_din' }} </mat-icon>
+  </div>
   <div class="ads">
     <ng-container *ngFor="let ad of adList | filter : filterInstance">
       <div
         [ngClass]="{
-          'ad-container--grid': adListViewType === 'grid',
-          'ad-container--center': adListViewType === 'center'
+          'ad-container--grid': view === 'grid',
+          'ad-container--center': view === 'center'
         }"
       >
         <app-advertisement [ad]="ad" [viewType]="'catalog'"> </app-advertisement>

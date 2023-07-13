@@ -7,9 +7,7 @@ import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { priceInterval } from './validation/price.validator';
 import { Filter } from './model/filter.interface';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/Observable';
-import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { ViewService } from './service/view.service';
 
 @Component({
   selector: 'app-advertisement-list',
@@ -20,21 +18,28 @@ export class AdvertisementListComponent implements OnInit {
   @Input()
   public adList!: AdvertisementImage[];
 
-  @Input()
-  public adListViewType!: AdvertisementListView;
+  public adListViewType: AdvertisementListView = 'grid';
 
   public filterGroup!: FormGroup;
 
   public filterInstance!: Filter;
 
-  public submit(): void {
-    this.filterInstance = this.filterGroup.getRawValue();
+  public get view() {
+    return this._viewService.view;
   }
 
-  constructor(private readonly _fb: FormBuilder, private readonly _filterService: FilterService) {}
+  constructor(
+    private readonly _fb: FormBuilder,
+    private readonly _filterService: FilterService,
+    private readonly _viewService: ViewService,
+  ) {}
 
   public ngOnInit(): void {
     this._createForm();
+  }
+
+  public submit(): void {
+    this.filterInstance = this.filterGroup.getRawValue();
   }
 
   private _createForm() {
@@ -56,5 +61,9 @@ export class AdvertisementListComponent implements OnInit {
     this.filterGroup.valueChanges.subscribe(() => {
       this.submit();
     });
+  }
+
+  public toggleListView() {
+    this._viewService.toggleView();
   }
 }

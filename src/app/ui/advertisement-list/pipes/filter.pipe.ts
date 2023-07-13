@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { AdvertisementImage } from '../model/auxiliary/advertisement-extensions.type';
-import { Filter } from '../ui/advertisement-list/model/filter.interface';
+import { AdvertisementImage } from '../../../model/auxiliary/advertisement-extensions.type';
+import { Filter } from '../model/filter.interface';
 
 @Pipe({
   name: 'filter',
@@ -61,8 +61,6 @@ export class FilterPipe implements PipeTransform {
       roomTerms.forEach((term: boolean) => {
         result = result && term;
       });
-
-      console.log(numberTerms);
 
       return result === true;
     });
