@@ -59,7 +59,6 @@ export class FavoritesService {
 
   private _add(id: string) {
     this._favoriteAdIdList?.push(id);
-    this._favoriteAdIdList?.sort();
     if (this._favoriteAdIdList) {
       this._storingService.setForce<string[]>(this._storingKey, this._favoriteAdIdList);
     }

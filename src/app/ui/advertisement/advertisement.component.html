@@ -27,7 +27,7 @@
         <mat-icon matSuffix>pin_drop</mat-icon>
       </span>
       <span>
-        <p class="ad-catalog__address--title">{{ ad.address }}</p>
+        <p class="ad-catalog__address--title" (click)="copyAddress()">{{ ad.address }}</p>
       </span>
     </div>
     <div class="ad-catalog__price">USD {{ ad.price }} per month</div>
