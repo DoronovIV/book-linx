@@ -3,6 +3,7 @@ import {
   AdvertisementUI,
   AdvertisementView,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
   selector: 'app-advertisement',
@@ -15,4 +16,11 @@ export class AdvertisementComponent {
 
   @Input()
   public viewType!: AdvertisementView;
+
+  constructor(private readonly _favoritesService: FavoritesService) {}
+
+  public toggle() {
+    this._favoritesService.toggle(this.ad.id);
+    this.ad.wasAdded = !this.ad.wasAdded;
+  }
 }

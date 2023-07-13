@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   private _loadAds(): void {
     this._adService.getList().subscribe((ads) => {
-      this.commonAdvertisementList = this._favsService.getList(ads);
+      this.commonAdvertisementList = this._favsService.getFullList(ads);
     });
   }
 }

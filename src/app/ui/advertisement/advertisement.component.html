@@ -1,7 +1,7 @@
 <div class="ad-container">
   <div [ngSwitch]="viewType">
     <div *ngSwitchCase="'catalog'">
-      <ng-container *ngTemplateOutlet="catalogView"> </ng-container>
+      <ng-container *ngTemplateOutlet="catalogView"></ng-container>
     </div>
   </div>
 </div>
@@ -9,8 +9,8 @@
 <ng-template #catalogView>
   <div class="ad-catalog">
     <div class="ad-catalog__title-control">
-      <div class="ad-catalog__title-control--control">
-        <mat-icon matSuffix>star_border</mat-icon>
+      <div class="ad-catalog__title-control--control" (click)="toggle()">
+        <mat-icon matSuffix>{{ ad.wasAdded ? 'star' : 'star_border' }}</mat-icon>
       </div>
       <h3 class="ad-catalog__title-control--title">{{ ad.title }}</h3>
     </div>
