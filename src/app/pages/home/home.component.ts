@@ -6,6 +6,7 @@ import { Advertisement } from 'src/app/model/main/advertisement.interface';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { AdvertisementImage } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { AuthorizationDialogComponent } from 'src/app/ui/authorization-dialog/authorization-dialog.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,13 @@ export class HomeComponent implements OnInit {
   public commonAdvertisementList: AdvertisementImage[] = [];
 
   public get authorized() {
-    return AppComponent.isAuthorized;
+    return this._auth.authorized;
   }
 
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _adService: AdvertisementService,
+    private readonly _auth: AuthorizationService,
   ) {}
 
   public ngOnInit(): void {

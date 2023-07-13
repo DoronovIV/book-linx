@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
 
 @NgModule({
@@ -18,7 +17,7 @@ import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [HTTP_REQUEST_PROVIDER],
   bootstrap: [AppComponent],
+  providers: [HTTP_REQUEST_PROVIDER],
 })
 export class AppModule {}

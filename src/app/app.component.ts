@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from './pages/login/services/authorization.service';
+import { AuthorizationService } from './services/authorization.service';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +9,9 @@ import { AuthorizationService } from './pages/login/services/authorization.servi
 export class AppComponent {
   public title = 'book-linx';
 
-  public static isAuthorized = false;
-
-  constructor(private readonly _authorizationService: AuthorizationService) {}
-
-  public get authorized(): Boolean {
-    if (!AppComponent.isAuthorized) {
-      let token = this._authorizationService.getToken();
-      const dateNow = new Date();
-
-      if (token) {
-        if (new Date(token.expirationDate).getTime() > dateNow.getTime()) {
-          AppComponent.isAuthorized = true;
-        }
-      }
-    }
-
-    return AppComponent.isAuthorized;
+  public get authorized() {
+    return this._auth.authorized;
   }
+
+  constructor(private readonly _auth: AuthorizationService) {}
 }

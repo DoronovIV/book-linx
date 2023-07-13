@@ -7,7 +7,7 @@ import { User as ModelUser } from '../../../model/main/user.interface';
 
 import { Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
-import { AuthorizationService } from './authorization.service';
+import { AuthorizationService } from '../../../services/authorization.service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -51,8 +51,7 @@ export class LoginService {
           });
 
           if (success) {
-            AppComponent.isAuthorized = true;
-            this._authorizationService.addToken(modelUser);
+            this._authorizationService.authorize(modelUser);
             this._router.navigateByUrl('/');
           } else {
             console.log('authorization fail');
