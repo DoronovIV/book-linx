@@ -1,4 +1,4 @@
-export interface Filter {
+export interface TaskFilter {
   lowerPrice: number;
   higherPrice: number;
   oneRoom: boolean;

@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="filter" (submit)="submit()" [formGroup]="filterGroup" autocomplete="off">
+  <form class="filter" (submit)="submit()" [formGroup]="filterTaskGroup" autocomplete="off">
     <div class="filter__price">
       <mat-form-field>
         <mat-label>From</mat-label>
@@ -57,10 +57,10 @@
     </div>
   </form>
   <div class="list-view-control" (click)="toggleListView()">
-    <mat-icon matSuffix> {{ view === 'center' ? 'grid_on' : 'crop_din' }} </mat-icon>
+    <mat-icon matSuffix>{{ view === 'grid' ? 'grid_on' : 'crop_din' }}</mat-icon>
   </div>
   <div class="ads">
-    <ng-container *ngFor="let ad of adList | filter : filterInstance">
+    <ng-container *ngFor="let ad of adList | taskfilter : filterTaskInstance">
       <div
         [ngClass]="{
           'ad-container--grid': view === 'grid',

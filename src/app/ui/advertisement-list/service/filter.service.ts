@@ -13,4 +13,8 @@ export class FilterService {
   public getAreaValidatorList() {
     return [Validators.maxLength(3)];
   }
+
+  public getRoomValidatorList() {
+    return [Validators.maxLength(2)];
+  }
 }

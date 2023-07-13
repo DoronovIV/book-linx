@@ -6,8 +6,9 @@ import {
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { priceInterval } from './validation/price.validator';
-import { Filter } from './model/filter.interface';
+import { TaskFilter } from './model/task-filter.interface';
 import { ViewService } from './service/view.service';
+import { FormView } from '../../model/auxiliary/form-view.type';
 
 @Component({
   selector: 'app-advertisement-list',
@@ -18,11 +19,11 @@ export class AdvertisementListComponent implements OnInit {
   @Input()
   public adList!: AdvertisementImage[];
 
-  public adListViewType: AdvertisementListView = 'grid';
+  public filterTaskGroup!: FormGroup;
 
-  public filterGroup!: FormGroup;
+  public filterTaskInstance!: TaskFilter;
 
-  public filterInstance!: Filter;
+  public formView: FormView = 'proper';
 
   public get view() {
     return this._viewService.view;
@@ -35,15 +36,19 @@ export class AdvertisementListComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this._createForm();
+    this._createForms();
   }
 
   public submit(): void {
-    this.filterInstance = this.filterGroup.getRawValue();
+    this.filterTaskInstance = this.filterTaskGroup.getRawValue();
   }
 
-  private _createForm() {
-    this.filterGroup = this._fb.group(
+  private _createForms() {
+    this._createTaskGroup();
+  }
+
+  private _createTaskGroup() {
+    this.filterTaskGroup = this._fb.group(
       {
         lowerPrice: ['', this._filterService.getPriceValidatorList()],
         higherPrice: ['', this._filterService.getPriceValidatorList()],
@@ -58,7 +63,7 @@ export class AdvertisementListComponent implements OnInit {
       },
     );
 
-    this.filterGroup.valueChanges.subscribe(() => {
+    this.filterTaskGroup.valueChanges.subscribe(() => {
       this.submit();
     });
   }
