@@ -14,18 +14,34 @@
   border: 1px solid #dedede;
   border-radius: 8px;
 
-  &__title {
-    margin: 0;
-    margin-bottom: 10px;
-    font-size: 26px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  &__title-control {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+
     width: 100%;
     height: 60px;
+    margin-bottom: 10px;
 
-    color: navy;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: pre-line;
-    word-break: break-word;
+    &--title {
+      font-size: 26px;
+
+      width: 100%;
+      height: 100%;
+
+      color: navy;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    &--control {
+      margin-left: -8px;
+      margin-top: -10px;
+    }
   }
 
   &__description-container {
@@ -58,6 +74,32 @@
     height: 100%;
     border-radius: 5px;
     aspect-ratio: 6 / 4;
+  }
+
+  &__address {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    margin: 10px;
+
+    &--icon {
+    }
+
+    &--title {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: pre-wrap;
+
+      color: black;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__price {

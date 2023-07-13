@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
-  AdvertisementImage,
+  AdvertisementExtended,
   AdvertisementListView,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
@@ -17,7 +17,7 @@ import { FormView } from '../../model/auxiliary/form-view.type';
 })
 export class AdvertisementListComponent implements OnInit {
   @Input()
-  public adList!: AdvertisementImage[];
+  public adList!: AdvertisementExtended[];
 
   public filterTaskGroup!: FormGroup;
 

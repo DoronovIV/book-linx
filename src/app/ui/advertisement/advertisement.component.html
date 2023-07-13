@@ -8,7 +8,12 @@
 
 <ng-template #catalogView>
   <div class="ad-catalog">
-    <h3 class="ad-catalog__title">{{ ad.title }}</h3>
+    <div class="ad-catalog__title-control">
+      <div class="ad-catalog__title-control--control">
+        <mat-icon matSuffix>star_border</mat-icon>
+      </div>
+      <h3 class="ad-catalog__title-control--title">{{ ad.title }}</h3>
+    </div>
     <div class="ad-catalog__body">
       <div class="ad-catalog__description-container">
         <p class="ad-catalog__description">{{ ad.description }}</p>
@@ -16,6 +21,14 @@
     </div>
     <div class="ad-catalog__image-container">
       <img class="ad-catalog__image" src="{{ ad.imagePathList[0] }}" alt="{{ ad.id }}" />
+    </div>
+    <div class="ad-catalog__address">
+      <span>
+        <mat-icon matSuffix>pin_drop</mat-icon>
+      </span>
+      <span>
+        <p class="ad-catalog__address--title">{{ ad.address }}</p>
+      </span>
     </div>
     <div class="ad-catalog__price">USD {{ ad.price }} per month</div>
   </div>

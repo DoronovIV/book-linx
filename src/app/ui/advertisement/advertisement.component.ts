@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
-  AdvertisementImage,
+  AdvertisementExtended,
   AdvertisementView,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 
@@ -11,7 +11,7 @@ import {
 })
 export class AdvertisementComponent {
   @Input()
-  public ad!: AdvertisementImage;
+  public ad!: AdvertisementExtended;
 
   @Input()
   public viewType!: AdvertisementView;
