@@ -17,10 +17,7 @@ export class FavoritesService {
 
   private readonly _storingKey = 'favs';
 
-  constructor(
-    private readonly _storingService: LocalStorageService,
-    private readonly _adService: AdvertisementService,
-  ) {
+  constructor(private readonly _storingService: LocalStorageService) {
     if (this._favoriteAdIdList) this._loadList();
   }
 
@@ -48,6 +45,32 @@ export class FavoritesService {
     return res;
   }
 
+  public getPatrialList(list: AdvertisementExtended[]): AdvertisementUI[] {
+    const res: AdvertisementUI[] = [];
+
+    list.forEach((ad) => {
+      const result = this._favoriteAdIdList.indexOf(ad.id);
+
+      if (result !== -1) {
+        const item = {
+          ...ad,
+          wasAdded: true,
+        };
+
+        res.push(item);
+        this._favoriteAdList.push(item);
+      }
+    });
+
+    return res;
+  }
+
+  public toggle(id: string): void {
+    if (this._favoriteAdIdList?.indexOf(id) !== -1) {
+      this._remove(id);
+    } else this._add(id);
+  }
+
   private _loadList() {
     const res = this._storingService.get<string[]>(this._storingKey);
     if (res) {
@@ -65,11 +88,5 @@ export class FavoritesService {
   public _remove(id: string) {
     this._favoriteAdIdList?.splice(this._favoriteAdIdList?.indexOf(id), 1);
     this._storingService.setForce<string[]>(this._storingKey, this._favoriteAdIdList);
-  }
-
-  public toggle(id: string): void {
-    if (this._favoriteAdIdList?.indexOf(id) !== -1) {
-      this._remove(id);
-    } else this._add(id);
   }
 }

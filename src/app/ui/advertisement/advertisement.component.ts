@@ -20,7 +20,7 @@ export class AdvertisementComponent {
 
   constructor(
     private readonly _favoritesService: FavoritesService,
-    private _snackBar: MatSnackBar,
+    private readonly _snackBar: MatSnackBar,
   ) {}
 
   public toggle() {

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdvertisementComponent } from './advertisement.component';
-import { NgImageSliderModule } from 'ng-image-slider';
+import { NgImageSliderModule } from 'ng-image-slider'; // DO NOT REMOVE;
 import { MatIconModule } from '@angular/material/icon';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AdvertisementComponent],

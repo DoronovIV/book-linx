@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   bootstrap: [AppComponent],
   providers: [HTTP_REQUEST_PROVIDER],
