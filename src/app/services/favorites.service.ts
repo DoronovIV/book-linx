@@ -48,8 +48,6 @@ export class FavoritesService {
     return res;
   }
 
-  public getFavoritesList() {}
-
   private _loadList() {
     const res = this._storingService.get<string[]>(this._storingKey);
     if (res) {
