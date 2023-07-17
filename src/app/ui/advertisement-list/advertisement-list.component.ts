@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   AdvertisementExtended,
   AdvertisementListView,
-  AdvertisementUI,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -18,7 +17,7 @@ import { FormView } from '../../model/auxiliary/form-view.type';
 })
 export class AdvertisementListComponent implements OnInit {
   @Input()
-  public adList!: AdvertisementUI[];
+  public adList!: AdvertisementExtended[];
 
   public filterTaskGroup!: FormGroup;
 

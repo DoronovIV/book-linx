@@ -5,7 +5,5 @@ export type AdvertisementListView = 'center' | 'grid';
 export type AdvertisementExtended = Advertisement & {
   imagePathList: string[];
   address: string;
-};
-export type AdvertisementUI = AdvertisementExtended & {
   wasAdded: boolean;
 };

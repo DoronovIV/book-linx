@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
-  AdvertisementUI,
+  AdvertisementExtended,
   AdvertisementView,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FavoritesService } from 'src/app/services/favorites.service';
@@ -13,7 +13,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class AdvertisementComponent {
   @Input()
-  public ad!: AdvertisementUI;
+  public ad!: AdvertisementExtended;
 
   @Input()
   public viewType!: AdvertisementView;

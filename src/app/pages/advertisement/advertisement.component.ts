@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AdvertisementUI } from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
 
 @Component({
   selector: 'app-advertisement-page',

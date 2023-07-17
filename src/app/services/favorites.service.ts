@@ -3,7 +3,6 @@ import { LocalStorageService } from './local-storage.service';
 import { Advertisement } from '../model/main/advertisement.interface';
 import {
   AdvertisementExtended,
-  AdvertisementUI,
 } from '../model/auxiliary/advertisement-extensions.type';
 import { AdvertisementService } from './advertisement.service';
 import { Observable, map, tap } from 'rxjs';
@@ -13,16 +12,20 @@ import { Observable, map, tap } from 'rxjs';
 })
 export class FavoritesService {
   private _favoriteAdIdList: string[] = [];
-  private _favoriteAdList: AdvertisementUI[] = [];
+  private _favoriteAdList: AdvertisementExtended[] = [];
 
   private readonly _storingKey = 'favs';
+
+  public get favoriteAdIdList() {
+    return this._favoriteAdIdList;
+  }
 
   constructor(private readonly _storingService: LocalStorageService) {
     if (this._favoriteAdIdList) this._loadList();
   }
 
-  public getFullList(list: AdvertisementExtended[]): AdvertisementUI[] {
-    const res: AdvertisementUI[] = [];
+  public getFullList(list: AdvertisementExtended[]): AdvertisementExtended[] {
+    const res: AdvertisementExtended[] = [];
 
     list.forEach((ad) => {
       const result = this._favoriteAdIdList.indexOf(ad.id);
@@ -45,8 +48,8 @@ export class FavoritesService {
     return res;
   }
 
-  public getPatrialList(list: AdvertisementExtended[]): AdvertisementUI[] {
-    const res: AdvertisementUI[] = [];
+  public getPatrialList(list: AdvertisementExtended[]): AdvertisementExtended[] {
+    const res: AdvertisementExtended[] = [];
 
     list.forEach((ad) => {
       const result = this._favoriteAdIdList.indexOf(ad.id);

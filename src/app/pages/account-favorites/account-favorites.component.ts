@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
-import { AdvertisementUI } from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 
@@ -10,7 +10,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   styleUrls: ['./account-favorites.component.scss'],
 })
 export class AccountFavoritesComponent implements OnInit {
-  private _adList: AdvertisementUI[] = [];
+  private _adList: AdvertisementExtended[] = [];
 
   public get adList() {
     return this._adList;
@@ -27,7 +27,6 @@ export class AccountFavoritesComponent implements OnInit {
       .pipe(
         tap((ads) => {
           this._adList = this._favsService.getPatrialList(ads);
-          console.log(this._adList);
         }),
       )
       .subscribe();
