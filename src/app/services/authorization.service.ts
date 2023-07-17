@@ -11,9 +11,19 @@ export class AuthorizationService {
   private readonly _storageKey = 'at';
 
   private _userLogin!: string;
+  private _currentUserID!: string;
 
   public get userLogin() {
     return this._userLogin;
+  }
+
+  public get currentUserID() {
+    if (!this._currentUserID) {
+      const token = this._storingService.get<AuthorizationToken>(this._storageKey);
+      this._currentUserID = token?.userID ?? '-1';
+    }
+
+    return this._currentUserID;
   }
 
   public get authorized() {
