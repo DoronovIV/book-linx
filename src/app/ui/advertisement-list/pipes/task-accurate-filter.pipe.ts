@@ -1,14 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {
-  AdvertisementExtended
-} from '../../../model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtension } from '../../../model/auxiliary/advertisement-extensions.type';
 import { TaskFilter } from '../model/task-filter.interface';
 
 @Pipe({
   name: 'taskfilter',
 })
 export class TaskAccurateFilterPipe implements PipeTransform {
-  transform(ads: AdvertisementExtended[], filter: TaskFilter): AdvertisementExtended[] {
+  transform(ads: AdvertisementExtension[], filter: TaskFilter): AdvertisementExtension[] {
     return ads.filter((ad) => {
       const numberTerms: boolean[] = [false, false, false];
 
@@ -63,7 +61,7 @@ export class TaskAccurateFilterPipe implements PipeTransform {
     });
   }
 
-  private _getAdRoomMap(ad: AdvertisementExtended): boolean[] {
+  private _getAdRoomMap(ad: AdvertisementExtension): boolean[] {
     const map: boolean[] = [false, false, false, false];
     map[ad.roomAmount - 1] = true;
     return map;

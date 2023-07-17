@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { tap } from 'rxjs';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
-import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtension } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { AuthorizationDialogComponent } from 'src/app/ui/authorization-dialog/authorization-dialog.component';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
@@ -13,7 +13,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public commonAdvertisementList: AdvertisementExtended[] = [];
+  public commonAdvertisementList: AdvertisementExtension[] = [];
 
   public get authorized() {
     return this._auth.authorized;

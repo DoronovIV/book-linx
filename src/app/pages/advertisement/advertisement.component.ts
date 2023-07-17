@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap, tap } from 'rxjs';
-import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtension } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AdvertisementService } from 'src/app/services/advertisement.service';
   styleUrls: ['./advertisement.component.scss'],
 })
 export class AdvertisementComponent implements OnInit {
-  public ad$!: Observable<AdvertisementExtended | undefined>;
+  public ad$!: Observable<AdvertisementExtension | undefined>;
 
   public images: Object[] = [];
 
@@ -30,7 +30,7 @@ export class AdvertisementComponent implements OnInit {
           this.ad$ = this._adSErvice.getByID(id);
           return this.ad$;
         }),
-        tap((ad: AdvertisementExtended | undefined) => {
+        tap((ad: AdvertisementExtension | undefined) => {
           if (ad) {
             console.log(ad);
             ad.imagePathList.forEach((el) => {

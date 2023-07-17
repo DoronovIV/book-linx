@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { Advertisement } from '../model/main/advertisement.interface';
-import { AdvertisementExtended } from '../model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtension } from '../model/auxiliary/advertisement-extensions.type';
 import { AdvertisementService } from './advertisement.service';
 import { Observable, map, tap } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Observable, map, tap } from 'rxjs';
 export class FavoritesService {
   private _favoriteAdIdList: string[] = [];
 
-  private _favoriteAdList: AdvertisementExtended[] = [];
+  private _favoriteAdList: AdvertisementExtension[] = [];
 
   private readonly _storingKey = 'favs';
 
@@ -23,7 +23,7 @@ export class FavoritesService {
     if (this._favoriteAdIdList) this._loadList();
   }
 
-  public getList(list: AdvertisementExtended[]): AdvertisementExtended[] {
+  public getList(list: AdvertisementExtension[]): AdvertisementExtension[] {
     const res = list.filter((ad) => {
       return ad.wasAdded === true;
     });

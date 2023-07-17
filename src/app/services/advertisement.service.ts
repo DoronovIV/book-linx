@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, delay, map, switchMap, tap } from 'rxjs';
 import { Advertisement } from '../model/main/advertisement.interface';
-import { AdvertisementExtended } from '../model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtension } from '../model/auxiliary/advertisement-extensions.type';
 import { LocalStorageService } from './local-storage.service';
 import { FavoritesService } from './favorites.service';
 
@@ -10,27 +10,23 @@ import { FavoritesService } from './favorites.service';
   providedIn: 'root',
 })
 export class AdvertisementService {
-  private _advertisementList$: Observable<AdvertisementExtended[]> | null = null;
+  private _advertisementList$: Observable<AdvertisementExtension[]> | null = null;
 
   private _favoriteAdIdList: string[] = [];
 
   private readonly _storingKey = 'favs';
 
-  constructor(
-    private readonly _storingService: LocalStorageService,
-    private readonly _http: HttpClient,
-    private readonly _favService: FavoritesService,
-  ) {}
+  constructor(private readonly _http: HttpClient, private readonly _favService: FavoritesService) {}
 
-  public getList(): Observable<AdvertisementExtended[]> {
+  public getList(): Observable<AdvertisementExtension[]> {
     if (!this._advertisementList$) {
       const url = 'ads';
 
       this._favoriteAdIdList = this._favService.favoriteAdIdList;
 
-      this._advertisementList$ = this._http.get<AdvertisementExtended[]>(url).pipe(
-        tap((ads: AdvertisementExtended[]) => {
-          let resultItem: AdvertisementExtended;
+      this._advertisementList$ = this._http.get<AdvertisementExtension[]>(url).pipe(
+        tap((ads: AdvertisementExtension[]) => {
+          let resultItem: AdvertisementExtension;
           ads.forEach((el) => {
             const index = this._favoriteAdIdList.indexOf(el.id);
 
@@ -38,6 +34,12 @@ export class AdvertisementService {
               el.wasAdded = true;
             } else {
               el.wasAdded = false;
+            }
+
+            if (el.commentList) {
+              el.commentList.forEach((el) => {
+                el.dateTime = new Date(el.dateTime);
+              });
             }
           });
         }),
@@ -47,7 +49,7 @@ export class AdvertisementService {
     return this._advertisementList$;
   }
 
-  public getByID(id: string): Observable<AdvertisementExtended | undefined> {
+  public getByID(id: string): Observable<AdvertisementExtension | undefined> {
     const url = 'ads';
 
     if (!this._advertisementList$) {

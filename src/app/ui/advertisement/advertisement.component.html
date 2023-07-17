@@ -72,5 +72,12 @@
       </span>
     </div>
     <div class="ad-page__price">USD {{ ad?.price | number }} per month</div>
+    <div class="ad-page__comments">
+      <ng-container *ngFor="let com of ad?.commentList">
+        <div class="comment">
+          <p>{{ com.contentText }}</p>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </ng-template>

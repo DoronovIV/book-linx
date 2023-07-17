@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
-  AdvertisementExtended,
+  AdvertisementExtension,
   AdvertisementView,
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { CommentExtension } from 'src/app/model/auxiliary/comment-extension.interface';
 
 @Component({
   selector: 'app-advertisement',
@@ -13,7 +14,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class AdvertisementComponent implements OnInit {
   @Input()
-  public ad!: AdvertisementExtended | null | undefined;
+  public ad!: AdvertisementExtension | null | undefined;
 
   @Input()
   public viewType!: AdvertisementView;
