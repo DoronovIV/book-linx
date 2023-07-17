@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/account').then(({ AccountModule }) => AccountModule),
   },
   {
+    path: 'advertisement/:id',
+    loadChildren: () =>
+      import('./pages/advertisement').then(({ AdvertisementModule }) => AdvertisementModule),
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '',

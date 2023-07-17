@@ -8,10 +8,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_REQUEST_PROVIDER } from './interceptors/provider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AdvertisementComponent } from './pages/advertisement/advertisement.component';
 
 @NgModule({
-  declarations: [AppComponent, AdvertisementComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,

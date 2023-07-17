@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AdvertisementUI } from 'src/app/model/auxiliary/advertisement-extensions.type';
 
 @Component({
-  selector: 'app-advertisement',
+  selector: 'app-advertisement-page',
   templateUrl: './advertisement.component.html',
-  styleUrls: ['./advertisement.component.scss']
+  styleUrls: ['./advertisement.component.scss'],
 })
-export class AdvertisementComponent {
-
-}
+export class AdvertisementComponent {}

@@ -12,7 +12,11 @@
       <div class="ad-catalog__title-control--control" (click)="toggle()">
         <mat-icon matSuffix>{{ ad.wasAdded ? 'star' : 'star_border' }}</mat-icon>
       </div>
-      <h3 class="ad-catalog__title-control--title">{{ ad.title }}</h3>
+      <ng-container>
+        <h3 class="ad-catalog__title-control--title" [routerLink]="['advertisement', ad.id]">
+          {{ ad.title }}
+        </h3>
+      </ng-container>
     </div>
     <div class="ad-catalog__body">
       <div class="ad-catalog__description-container">
