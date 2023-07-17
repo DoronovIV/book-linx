@@ -27,3 +27,34 @@ today 10/07:
 - login page [x]
 - header (adjust color, push 'sign-in' to the right, add user-page link)
 - make a modal that filters unregistered user
+
+
+tomorrow 18/07:
+
+ - add password confirmation field (with validation)
+ - improve form error handling
+ - add user nickname extension (as well as add nicknames to the backend mock)
+
+
+the other day 19/07:
+
+ - start the comment branch
+
+ - add comments to the backend ({authorNickname, date, contents})
+ - deal with comment fetching at the front-side (rxjs)
+ - add a service that would add comments to the localStorage
+
+
+ the day after 20/07:
+
+ - add a form for the comments at the page of the ad
+ - add a comment counter to the product component  
+ - test everything
+ 
+&evening
+ - test at home
+
+
+day X 21/07: 
+
+ - test, hotfix, present etc.
