@@ -34,7 +34,7 @@ export class AdvertisementService {
           ads.forEach((el) => {
             const index = this._favoriteAdIdList.indexOf(el.id);
 
-            if (index !== 0) {
+            if (index !== -1) {
               el.wasAdded = true;
             } else {
               el.wasAdded = false;

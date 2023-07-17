@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { Advertisement } from '../model/main/advertisement.interface';
-import {
-  AdvertisementExtended,
-} from '../model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtended } from '../model/auxiliary/advertisement-extensions.type';
 import { AdvertisementService } from './advertisement.service';
 import { Observable, map, tap } from 'rxjs';
 
@@ -24,47 +22,10 @@ export class FavoritesService {
     if (this._favoriteAdIdList) this._loadList();
   }
 
-  public getFullList(list: AdvertisementExtended[]): AdvertisementExtended[] {
-    const res: AdvertisementExtended[] = [];
-
-    list.forEach((ad) => {
-      const result = this._favoriteAdIdList.indexOf(ad.id);
-
-      if (result !== -1) {
-        const item = {
-          ...ad,
-          wasAdded: true,
-        };
-
-        res.push(item);
-        this._favoriteAdList.push(item);
-      } else
-        res.push({
-          ...ad,
-          wasAdded: false,
-        });
+  public getList(list: AdvertisementExtended[]): AdvertisementExtended[] {
+    const res = list.filter((ad) => {
+      return ad.wasAdded === true;
     });
-
-    return res;
-  }
-
-  public getPatrialList(list: AdvertisementExtended[]): AdvertisementExtended[] {
-    const res: AdvertisementExtended[] = [];
-
-    list.forEach((ad) => {
-      const result = this._favoriteAdIdList.indexOf(ad.id);
-
-      if (result !== -1) {
-        const item = {
-          ...ad,
-          wasAdded: true,
-        };
-
-        res.push(item);
-        this._favoriteAdList.push(item);
-      }
-    });
-
     return res;
   }
 

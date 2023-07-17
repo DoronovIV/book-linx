@@ -26,7 +26,7 @@ export class AccountFavoritesComponent implements OnInit {
       .getList()
       .pipe(
         tap((ads) => {
-          this._adList = this._favsService.getPatrialList(ads);
+          this._adList = this._favsService.getList(ads);
         }),
       )
       .subscribe();

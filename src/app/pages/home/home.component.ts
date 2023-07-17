@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       .getList()
       .pipe(
         tap((ads) => {
-          this.commonAdvertisementList = this._favsService.getFullList(ads);
+          this.commonAdvertisementList = ads;
         }),
       )
       .subscribe();
