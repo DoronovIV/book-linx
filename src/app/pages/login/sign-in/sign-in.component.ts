@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import { LoginService } from '../services/login.service';
+import { FormService } from '../../../services/form.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SignInComponent {
   public signInGroup!: FormGroup;
 
-  constructor(private readonly _fb: FormBuilder, private readonly _loginService: LoginService) {}
+  constructor(private readonly _fb: FormBuilder, private readonly _formService: FormService) {}
 
   public ngOnInit(): void {
     this._createForm();
@@ -21,13 +21,13 @@ export class SignInComponent {
     const user: User = this.signInGroup.getRawValue();
     console.log(user);
 
-    this._loginService.signIn(user);
+    this._formService.signIn(user);
   }
 
   private _createForm(): void {
     this.signInGroup = this._fb.group({
-      login: ['', this._loginService.getLoginValidatorList()],
-      password: ['', this._loginService.getPasswordValidatorList()],
+      login: ['', this._formService.getLoginValidatorList()],
+      password: ['', this._formService.getPasswordValidatorList()],
       save: [true],
     });
   }

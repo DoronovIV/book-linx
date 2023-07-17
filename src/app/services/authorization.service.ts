@@ -10,6 +10,12 @@ export class AuthorizationService {
   private _authorized = false;
   private readonly _storageKey = 'at';
 
+  private _userLogin!: string;
+
+  public get userLogin() {
+    return this._userLogin;
+  }
+
   public get authorized() {
     if (!this._authorized) {
       let token = this.getToken();
@@ -30,6 +36,7 @@ export class AuthorizationService {
   public authorize(user: User | null) {
     this.addToken(user);
     this._authorized = true;
+    this._userLogin = user?.login ?? '';
   }
 
   public addToken(usr: User | null): void {
@@ -40,6 +47,7 @@ export class AuthorizationService {
 
       const token: AuthorizationToken = {
         userID: usr.id,
+        userLogin: usr.login,
         expirationDate: tomorrow,
       };
 
@@ -48,12 +56,15 @@ export class AuthorizationService {
   }
 
   public getToken(): AuthorizationToken | null {
-    return this._storingService.get<AuthorizationToken>(this._storageKey);
+    const token = this._storingService.get<AuthorizationToken>(this._storageKey);
+    this._userLogin = token?.userLogin ?? '';
+    return token;
   }
 
   private _removeToken() {
     const zeroToken: AuthorizationToken = {
       userID: '-1',
+      userLogin: 'None',
       expirationDate: new Date(0),
     };
 

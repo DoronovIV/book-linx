@@ -7,4 +7,34 @@
       <mat-icon matTooltip="E x i t" matSuffix>exit_to_app</mat-icon>
     </div>
   </div>
+
+  <div class="user-data">
+    <div class="user-data__login">Your login: {{ userLogin }}</div>
+
+    <form class="user-data__form" (submit)="submit()" [formGroup]="userData" autocomplete="off">
+      <h2 class="user-data">Change your password</h2>
+
+      <div class="user-data__control">
+        <mat-form-field appearance="fill">
+          <mat-label>Old Password</mat-label>
+          <input type="password" matInput formControlName="oldPassword" placeholder="" />
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-hint>must be correct</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="user-data__control">
+        <mat-form-field appearance="fill">
+          <mat-label>New Password</mat-label>
+          <input type="password" matInput formControlName="newPassword" placeholder="" />
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-hint>8 chars, 2 capital, 2 digits and 1 special</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="user-data__control user-data__control--spaces">
+        <button mat-raised-button [disabled]="userData.invalid" color="primary">Apply</button>
+      </div>
+    </form>
+  </div>
 </div>

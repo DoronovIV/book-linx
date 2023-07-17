@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SignInRoutingModule } from './sign-in-routing.module';
 import { SignInComponent } from './sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from '../services/login.service';
+import { FormService } from '../../../services/form.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +24,6 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService],
+  providers: [FormService],
 })
 export class SignInModule {}

@@ -2,18 +2,18 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, catchError, tap } from 'rxjs';
 
-import { User as User } from '../interfaces/user.interface';
-import { User as ModelUser } from '../../../model/main/user.interface';
+import { User as User } from '../pages/login/interfaces/user.interface';
+import { User as ModelUser } from '../model/main/user.interface';
 
 import { Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
-import { AuthorizationService } from '../../../services/authorization.service';
+import { AuthorizationService } from './authorization.service';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class FormService {
   constructor(
     private readonly _router: Router,
     private readonly _http: HttpClient,
@@ -72,9 +72,9 @@ export class LoginService {
   public getPasswordValidatorList() {
     return [
       Validators.required,
-      Validators.minLength(6),
+      Validators.minLength(8),
       Validators.maxLength(16),
-      Validators.pattern(/^[A-Za-z0-9]*$/),
+      Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{2})[a-zA-Z0-9!@#$%^&*]*$/),
     ];
   }
 }
