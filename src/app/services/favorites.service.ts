@@ -29,10 +29,12 @@ export class FavoritesService {
     return res;
   }
 
-  public toggle(id: string): void {
-    if (this._favoriteAdIdList?.indexOf(id) !== -1) {
-      this._remove(id);
-    } else this._add(id);
+  public toggle(id: string | null): void {
+    if (id) {
+      if (this._favoriteAdIdList?.indexOf(id) !== -1) {
+        this._remove(id);
+      } else this._add(id);
+    }
   }
 
   private _loadList() {

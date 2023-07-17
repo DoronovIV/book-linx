@@ -3,37 +3,74 @@
     <div *ngSwitchCase="'catalog'">
       <ng-container *ngTemplateOutlet="catalogView"></ng-container>
     </div>
+    <div *ngSwitchCase="'page'">
+      <ng-container *ngTemplateOutlet="pageView"></ng-container>
+    </div>
   </div>
 </div>
 
 <ng-template #catalogView>
   <div class="ad-catalog">
     <div class="ad-catalog__title-control">
+      <h3
+        class="ad-catalog__title-control--title-pointer"
+        [routerLink]="['/advertisement', ad?.id]"
+      >
+        {{ ad?.title }}
+      </h3>
       <div class="ad-catalog__title-control--control" (click)="toggle()">
-        <mat-icon matSuffix>{{ ad.wasAdded ? 'star' : 'star_border' }}</mat-icon>
+        <mat-icon matSuffix>{{ ad?.wasAdded ? 'star' : 'star_border' }}</mat-icon>
       </div>
-      <ng-container>
-        <h3 class="ad-catalog__title-control--title" [routerLink]="['advertisement', ad.id]">
-          {{ ad.title }}
-        </h3>
-      </ng-container>
     </div>
     <div class="ad-catalog__body">
       <div class="ad-catalog__description-container">
-        <p class="ad-catalog__description">{{ ad.description }}</p>
+        <p class="ad-catalog__description">{{ ad?.description }}</p>
       </div>
     </div>
     <div class="ad-catalog__image-container">
-      <img class="ad-catalog__image" src="{{ ad.imagePathList[0] }}" alt="{{ ad.id }}" />
+      <img class="ad-catalog__image" src="{{ titleImageSrc }}" alt="{{ ad?.id }}" />
     </div>
     <div class="ad-catalog__address">
       <span>
         <mat-icon matSuffix>pin_drop</mat-icon>
       </span>
       <span>
-        <p class="ad-catalog__address--title" (click)="copyAddress()">{{ ad.address }}</p>
+        <p class="ad-catalog__address--title" (click)="copyAddress()">{{ ad?.address }}</p>
       </span>
     </div>
-    <div class="ad-catalog__price">USD {{ ad.price }} per month</div>
+    <div class="ad-catalog__price">USD {{ ad?.price | number }} per month</div>
+  </div>
+</ng-template>
+
+<ng-template #pageView>
+  <div class="ad-page">
+    <div class="ad-page__title-control">
+      <h3 class="ad-page__title-control--title">
+        {{ ad?.title }}
+      </h3>
+      <div class="ad-page__title-control--control" (click)="toggle()">
+        <mat-icon matSuffix>{{ ad?.wasAdded ? 'star' : 'star_border' }}</mat-icon>
+      </div>
+    </div>
+    <div class="ad-page__body">
+      <div class="ad-page__description-container">
+        <p class="ad-page__description">{{ ad?.description }}</p>
+      </div>
+    </div>
+    <div class="ad-page__image-container">
+      <ng-content></ng-content>
+    </div>
+    <div class="ad-page__area">
+      <p>Area: {{ ad?.area }} m²</p>
+    </div>
+    <div class="ad-page__address">
+      <span>
+        <mat-icon matSuffix>pin_drop</mat-icon>
+      </span>
+      <span>
+        <p class="ad-page__address--title" (click)="copyAddress()">{{ ad?.address }}</p>
+      </span>
+    </div>
+    <div class="ad-page__price">USD {{ ad?.price | number }} per month</div>
   </div>
 </ng-template>

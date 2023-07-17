@@ -1,0 +1,117 @@
+:host {
+  width: 100%;
+}
+
+.ad-container {
+}
+
+.ad-page {
+  width: 50%;
+  box-sizing: border-box;
+
+  margin: 60px auto;
+  padding: 20px;
+
+  background-color: white;
+
+  &__title-control {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+
+    &--title,
+    &--title-pointer {
+      width: 50%;
+      height: 100%;
+      font-size: 26px;
+
+      color: navy;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    &--title-pointer {
+      cursor: pointer;
+    }
+
+    &--control {
+      margin-right: -8px;
+      margin-top: -10px;
+
+      cursor: pointer;
+    }
+  }
+
+  &__description-container {
+    overflow: hidden;
+  }
+
+  &__description {
+    white-space: pre-line;
+    color: dimgrey;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image-container {
+    margin: 60px auto;
+    width: 100%;
+  }
+
+  &__image {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    aspect-ratio: 6 / 4;
+  }
+
+  &__area {
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
+
+  &__address {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    font-weight: 800;
+    margin: 10px;
+
+    &--icon {
+    }
+
+    &--title {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: pre-wrap;
+
+      color: black;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__price {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
+      Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin: 30px 20px;
+  }
+}

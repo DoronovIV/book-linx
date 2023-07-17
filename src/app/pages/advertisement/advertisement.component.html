@@ -1,1 +1,3 @@
-<p>advertisement works!</p>
+<app-advertisement [ad]="ad$ | async" [viewType]="'page'">
+  <ng-image-slider [images]="images"></ng-image-slider>
+</app-advertisement>

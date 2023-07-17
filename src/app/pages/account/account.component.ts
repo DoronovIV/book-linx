@@ -42,10 +42,8 @@ export class AccountComponent implements OnInit {
 
   private _createForm(): void {
     this.userData = this._fb.group({
-      login: ['', this._formService.getLoginValidatorList()],
       oldPassword: ['', this._formService.getPasswordValidatorList()],
       newPassword: ['', this._formService.getPasswordValidatorList()],
-      save: [true],
     });
   }
 }

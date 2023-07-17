@@ -50,12 +50,15 @@ export class AdvertisementService {
   public getByID(id: string): Observable<AdvertisementExtended | undefined> {
     const url = 'ads';
 
-    return this._http.get<AdvertisementExtended[]>(url).pipe(
+    if (!this._advertisementList$) {
+      this.getList();
+    }
+
+    return this._advertisementList$!.pipe(
       map((ads) => {
         const ad = ads.find((el) => {
-          return (el.id = id);
+          return el.id === id;
         });
-
         return ad;
       }),
     );
