@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   private readonly _url = `users`;
+  private _currentUserID!: string;
+
+  public get currentUserID() {
+    return this._currentUserID;
+  }
   constructor(
     private readonly _http: HttpClient,
     private readonly _authorizationService: AuthorizationService,
@@ -19,11 +24,14 @@ export class LoginService {
 
   public async getUserByID(id: string): Promise<ModelUser | undefined> {
     let user!: ModelUser | undefined;
-    await this._http.get<ModelUser[]>(this._url).pipe(
-      tap((users) => {
-        user = users.find((usr) => usr.id === id);
-      }),
-    ).toPromise();
+    await this._http
+      .get<ModelUser[]>(this._url)
+      .pipe(
+        tap((users) => {
+          user = users.find((usr) => usr.id === id);
+        }),
+      )
+      .toPromise();
 
     return user;
   }
@@ -45,6 +53,7 @@ export class LoginService {
               if (condition) {
                 success = condition;
                 modelUser = el;
+                this._currentUserID = modelUser?.id;
               }
             });
 

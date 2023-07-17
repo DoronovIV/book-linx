@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserDataValidationService } from 'src/app/services';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { FormService } from 'src/app/services/form.service';
 
@@ -23,6 +24,7 @@ export class AccountComponent implements OnInit {
     private readonly _router: Router,
     private readonly _fb: FormBuilder,
     private readonly _formService: FormService,
+    private readonly _passwordValidator: UserDataValidationService,
   ) {}
 
   public ngOnInit() {
@@ -42,7 +44,11 @@ export class AccountComponent implements OnInit {
 
   private _createForm(): void {
     this.userData = this._fb.group({
-      oldPassword: ['', this._formService.getPasswordValidatorList()],
+      oldPassword: [
+        '',
+        this._formService.getPasswordValidatorList(),
+        this._passwordValidator.validate.bind(this._passwordValidator),
+      ],
       newPassword: ['', this._formService.getPasswordValidatorList()],
     });
   }
