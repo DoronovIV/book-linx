@@ -10,6 +10,7 @@ import { Observable, map, tap } from 'rxjs';
 })
 export class FavoritesService {
   private _favoriteAdIdList: string[] = [];
+
   private _favoriteAdList: AdvertisementExtended[] = [];
 
   private readonly _storingKey = 'favs';

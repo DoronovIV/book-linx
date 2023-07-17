@@ -26,7 +26,7 @@ export class FormService {
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(16),
-      Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{2})[a-zA-Z0-9!@#$%^&*]*$/),
+      Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{1})[a-zA-Z0-9!@#$%^&*]*$/),
     ];
   }
 }
