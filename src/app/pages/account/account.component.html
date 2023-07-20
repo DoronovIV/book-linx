@@ -32,6 +32,15 @@
         </mat-form-field>
       </div>
 
+      <div class="user-data__control">
+        <mat-form-field appearance="fill">
+          <mat-label>Repeat New Password</mat-label>
+          <input type="password" matInput formControlName="repeatNewPassword" placeholder="" />
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-hint>repeat your new password</mat-hint>
+        </mat-form-field>
+      </div>
+
       <div class="user-data__control user-data__control--spaces">
         <button mat-raised-button [disabled]="userData.invalid" color="primary">Apply</button>
       </div>

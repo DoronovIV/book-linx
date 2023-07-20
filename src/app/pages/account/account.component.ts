@@ -50,6 +50,7 @@ export class AccountComponent implements OnInit {
         this._passwordValidator.validate.bind(this._passwordValidator),
       ],
       newPassword: ['', this._formService.getPasswordValidatorList()],
+      repeatNewPassword: ['', this._formService.getPasswordValidatorList()],
     });
   }
 }
