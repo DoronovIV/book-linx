@@ -5,7 +5,6 @@ import {
 } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { priceInterval } from './validation/price.validator';
 import { TaskFilter } from './model/task-filter.interface';
 import { ViewService } from './service/view.service';
 import { FormView } from '../../model/auxiliary/form-view.type';
@@ -48,20 +47,15 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   private _createTaskGroup() {
-    this.filterTaskGroup = this._fb.group(
-      {
-        lowerPrice: ['', this._filterService.getPriceValidatorList()],
-        higherPrice: ['', this._filterService.getPriceValidatorList()],
-        oneRoom: [false],
-        twoRooms: [false],
-        threeRooms: [false],
-        fourRooms: [false],
-        area: ['', this._filterService.getAreaValidatorList()],
-      },
-      {
-        validators: priceInterval,
-      },
-    );
+    this.filterTaskGroup = this._fb.group({
+      lowerPrice: ['', this._filterService.getPriceValidatorList()],
+      higherPrice: ['', this._filterService.getPriceValidatorList()],
+      oneRoom: [false],
+      twoRooms: [false],
+      threeRooms: [false],
+      fourRooms: [false],
+      area: ['', this._filterService.getAreaValidatorList()],
+    });
 
     this.filterTaskGroup.valueChanges.subscribe(() => {
       this.submit();
