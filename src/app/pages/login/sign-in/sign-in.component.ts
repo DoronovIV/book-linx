@@ -11,6 +11,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SignInComponent {
   public signInGroup!: FormGroup;
 
+  private _authorizationFailed = false;
+
+  public get authorizationFailed() {
+    return this._authorizationFailed;
+  }
+
   constructor(
     private readonly _fb: FormBuilder,
     private readonly _loginService: LoginService,
@@ -21,11 +27,11 @@ export class SignInComponent {
     this._createForm();
   }
 
-  public submit(): void {
+  public async submit(): Promise<void> {
     const user: User = this.signInGroup.getRawValue();
     console.log(user);
 
-    this._loginService.signIn(user);
+    this._authorizationFailed = !(await this._loginService.signIn(user));
   }
 
   private _createForm(): void {

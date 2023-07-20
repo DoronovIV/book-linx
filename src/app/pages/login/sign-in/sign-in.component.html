@@ -16,7 +16,7 @@
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password" placeholder="" />
         <mat-icon matSuffix>lock</mat-icon>
-        <mat-hint>At least 6 characters</mat-hint>
+        <mat-hint>At least 8 characters</mat-hint>
       </mat-form-field>
     </div>
 
@@ -28,9 +28,16 @@
       <button mat-raised-button [disabled]="signInGroup.invalid" color="primary">Sign In</button>
     </div>
 
-    <div class="sign-up-container">
-      <span class="sign-up-container__label"> Don't have an account yet? </span>
-      <span class="sign-up-container__link" routerLink="/sign-up"> Sign Up </span>
+    <div class="sign-un__authorization-result">
+      <p
+        [ngClass]="
+          authorizationFailed
+            ? 'sign-in__authorization-result--label-fail'
+            : 'sign-in__authorization-result--label-success'
+        "
+      >
+        Incorrect login or password
+      </p>
     </div>
   </form>
 </div>

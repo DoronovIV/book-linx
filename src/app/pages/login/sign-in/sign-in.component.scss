@@ -24,30 +24,28 @@
     width: 50%;
     margin: 10px auto;
   }
+
+  &__authorization-result {
+    width: 10%;
+    margin: 20px auto;
+    &--label-success {
+      visibility: hidden;
+    }
+
+    &--label-fail {
+      margin: 0 37%;
+      color: red;
+    }
+  }
 }
 
 input {
   &.ng-invalid:not(.ng-pristine) {
-    border: 1px solid red;
+    border-bottom: 1px solid red;
   }
 }
 
 button {
   margin-top: 20px;
   font-size: 18px;
-}
-
-.sign-up-container {
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  color: black;
-
-  &__link {
-    margin-left: 20px;
-    margin-right: 20px;
-    color: #057e23;
-    font-weight: 600;
-    cursor: pointer;
-  }
 }

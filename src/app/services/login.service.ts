@@ -22,10 +22,11 @@ export class LoginService {
     private readonly _router: Router,
   ) {}
 
-  public signIn(user: User): void {
+  public async signIn(user: User): Promise<boolean> {
     let userList: ModelUser[] = [];
+    let result = false;
 
-    this._http
+    await this._http
       .get<ModelUser[]>(this._url)
       .pipe(
         tap((users) => {
@@ -46,8 +47,10 @@ export class LoginService {
             if (success) {
               this._authorizationService.authorize(modelUser);
               this._router.navigateByUrl('/');
+              result = true;
             } else {
               console.log('authorization fail');
+              result = false;
             }
           }
         }),
@@ -57,6 +60,7 @@ export class LoginService {
           return EMPTY;
         }),
       )
-      .subscribe();
+      .toPromise();
+    return result;
   }
 }
