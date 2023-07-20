@@ -22,20 +22,6 @@ export class LoginService {
     private readonly _router: Router,
   ) {}
 
-  public async getUserByID(id: string): Promise<ModelUser | undefined> {
-    let user!: ModelUser | undefined;
-    await this._http
-      .get<ModelUser[]>(this._url)
-      .pipe(
-        tap((users) => {
-          user = users.find((usr) => usr.id === id);
-        }),
-      )
-      .toPromise();
-
-    return user;
-  }
-
   public signIn(user: User): void {
     let userList: ModelUser[] = [];
 

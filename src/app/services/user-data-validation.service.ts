@@ -9,8 +9,8 @@ export class UserDataValidationService {
   constructor(private readonly _auth: AuthorizationService) {}
 
   public validateRepeatPasswordMatch(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('newPassword');
-    const confirmPassword = control.get('repeatNewPassword');
+    const password = control;
+    const confirmPassword = control.parent?.get('newPassword');
 
     if (password && confirmPassword && password.value != confirmPassword.value) {
       return {
@@ -22,7 +22,7 @@ export class UserDataValidationService {
   }
 
   public validateCurrentPasswordMatch(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('oldPassword');
+    const password = control;
 
     if (password && password.value != this._auth.userPassword) {
       return {

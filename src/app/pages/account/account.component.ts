@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataValidationService } from 'src/app/services';
 import { AuthorizationService } from 'src/app/services/authorization.service';
@@ -46,11 +46,33 @@ export class AccountComponent implements OnInit {
     this.userData = this._fb.group({
       oldPassword: [
         '',
-        this._formService.getPasswordValidatorList(),
-        this._passwordValidator.validate.bind(this._passwordValidator),
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+          Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{1})[a-zA-Z0-9!@#$%^&*]*$/),
+          this._passwordValidator.validateCurrentPasswordMatch.bind(this._passwordValidator),
+        ],
       ],
-      newPassword: ['', this._formService.getPasswordValidatorList()],
-      repeatNewPassword: ['', this._formService.getPasswordValidatorList()],
+      newPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+          Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{1})[a-zA-Z0-9!@#$%^&*]*$/),
+        ],
+      ],
+      repeatNewPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+          Validators.pattern(/^(?=.*[0-9]{2})(?=.*[!@#$%^&*]{1})[a-zA-Z0-9!@#$%^&*]*$/),
+          this._passwordValidator.validateRepeatPasswordMatch.bind(this._passwordValidator),
+        ],
+      ],
     });
   }
 }
