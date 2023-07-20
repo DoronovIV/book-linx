@@ -48,6 +48,7 @@ export class AuthorizationService {
       const token: AuthorizationToken = {
         userID: usr.id,
         userLogin: usr.login,
+        userPassword: usr.password,
         expirationDate: tomorrow,
       };
 
@@ -65,6 +66,7 @@ export class AuthorizationService {
     const zeroToken: AuthorizationToken = {
       userID: '-1',
       userLogin: 'None',
+      userPassword: 'NONE12!@',
       expirationDate: new Date(0),
     };
 
