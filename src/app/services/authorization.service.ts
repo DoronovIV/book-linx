@@ -8,12 +8,18 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class AuthorizationService {
   private _authorized = false;
+
   private readonly _storageKey = 'at';
 
   private _userLogin!: string;
 
   public get userLogin() {
     return this._userLogin;
+  }
+
+  public get userPassword() {
+    const token = this._storingService.get<AuthorizationToken>(this._storageKey);
+    return token?.userPassword;
   }
 
   public get authorized() {

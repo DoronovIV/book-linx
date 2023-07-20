@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from './login.service';
-import { AbstractControl, AsyncValidator, ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AuthorizationService } from './authorization.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserDataValidationService implements AsyncValidator {
-  constructor(private readonly _loginService: LoginService) {}
-  public async validate(
-    control: AbstractControl<any, any>,
-  ): Promise<Promise<ValidationErrors | null> | Observable<ValidationErrors | null>> {
-    const user = await this._loginService.getUserByID(this._loginService.currentUserID);
+export class UserDataValidationService {
+  constructor(private readonly _auth: AuthorizationService) {}
 
-    let currentPassword = control.value;
+  public validateRepeatPasswordMatch(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('newPassword');
+    const confirmPassword = control.get('repeatNewPassword');
 
-    if (user?.password) {
-      if (user?.password === currentPassword) {
-        return null;
-      }
+    if (password && confirmPassword && password.value != confirmPassword.value) {
+      return {
+        matchError: true,
+      };
     }
 
-    return new Observable<ValidationErrors>();
+    return null;
   }
-  registerOnValidatorChange?(fn: () => void): void {
-    throw new Error('Method not implemented.');
+
+  public validateCurrentPasswordMatch(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('oldPassword');
+
+    if (password && password.value != this._auth.userPassword) {
+      return {
+        matchError: true,
+      };
+    }
+
+    return null;
   }
 }
