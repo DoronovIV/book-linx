@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   AdvertisementExtended,
@@ -10,6 +16,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement-catalog.component.scss', './advertisement-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvertisementComponent implements OnInit {
   @Input()
@@ -23,6 +30,7 @@ export class AdvertisementComponent implements OnInit {
   constructor(
     private readonly _favoritesService: FavoritesService,
     private readonly _snackBar: MatSnackBar,
+    private readonly _cdr: ChangeDetectorRef,
   ) {}
 
   public ngOnInit(): void {
@@ -37,6 +45,7 @@ export class AdvertisementComponent implements OnInit {
       this._favoritesService.toggle(this.ad.id);
       this.ad.wasAdded = !this.ad.wasAdded;
     }
+    this._cdr.detectChanges();
   }
 
   public copyAddress() {

@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,6 +16,7 @@ import { FormView } from '../../model/auxiliary/form-view.type';
   selector: 'app-advertisement-list',
   templateUrl: './advertisement-list.component.html',
   styleUrls: ['./advertisement-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvertisementListComponent implements OnInit {
   @Input()
@@ -29,6 +36,7 @@ export class AdvertisementListComponent implements OnInit {
     private readonly _fb: FormBuilder,
     private readonly _filterService: FilterService,
     private readonly _viewService: ViewService,
+    private readonly _cdr: ChangeDetectorRef,
   ) {}
 
   public ngOnInit(): void {
@@ -56,6 +64,7 @@ export class AdvertisementListComponent implements OnInit {
 
     this.filterTaskGroup.valueChanges.subscribe(() => {
       this.submit();
+      this._cdr.detectChanges();
     });
   }
 
