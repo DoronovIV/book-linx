@@ -24,7 +24,7 @@ export class AuthorizationService {
 
   public get authorized() {
     if (!this._authorized) {
-      let token = this.getToken();
+      const token = this.getToken();
       const dateNow = new Date();
 
       if (token) {
@@ -48,7 +48,7 @@ export class AuthorizationService {
   public addToken(usr: User | null): void {
     if (usr) {
       // authorization token is valid for 24 hours;
-      let tomorrow = new Date();
+      const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
 
       const token: AuthorizationToken = {

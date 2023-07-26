@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap, tap } from 'rxjs';
 import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
@@ -12,7 +12,7 @@ import { AdvertisementService } from 'src/app/services/advertisement.service';
 export class AdvertisementComponent implements OnInit {
   public ad$!: Observable<AdvertisementExtended | undefined>;
 
-  public images: Object[] = [];
+  public images: object[] = [];
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
@@ -27,7 +27,10 @@ export class AdvertisementComponent implements OnInit {
     this._activatedRoute.params
       .pipe(
         switchMap(({ id }) => {
-          this.ad$ = this._adSErvice.getByID(id);
+          const ad$ = this._adSErvice.getByID(id);
+          if (ad$) {
+            this.ad$ = ad$;
+          }
           return this.ad$;
         }),
         tap((ad: AdvertisementExtended | undefined) => {

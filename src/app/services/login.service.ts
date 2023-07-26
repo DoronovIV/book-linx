@@ -33,18 +33,11 @@ export class LoginService {
           userList = users ?? [];
 
           if (userList) {
-            let success = false;
-            let modelUser: ModelUser | null = null;
-            userList.forEach((el) => {
-              let condition = user.login === el.login && user.password === el.password;
-              if (condition) {
-                success = condition;
-                modelUser = el;
-                this._currentUserID = modelUser?.id;
-              }
+            const modelUser: ModelUser | undefined = userList.find((el) => {
+              return user.login === el.login && user.password === el.password;
             });
 
-            if (success) {
+            if (modelUser) {
               this._authorizationService.authorize(modelUser);
               this._router.navigateByUrl('/');
               result = true;

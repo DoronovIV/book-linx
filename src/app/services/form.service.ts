@@ -1,17 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, catchError, tap } from 'rxjs';
-
 import { Validators } from '@angular/forms';
-import { AuthorizationService } from './authorization.service';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
-  constructor() {}
-
   public getLoginValidatorList() {
     return [
       Validators.required,

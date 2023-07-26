@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  AdvertisementExtended,
-  AdvertisementListView,
-} from 'src/app/model/auxiliary/advertisement-extensions.type';
+import { AdvertisementExtended } from 'src/app/model/auxiliary/advertisement-extensions.type';
 import { FilterService } from './service/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskFilter } from './model/task-filter.interface';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { LoginService, FormService } from '../../../services/index';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
   public signInGroup!: FormGroup;
 
   private _authorizationFailed = false;

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { Advertisement } from '../model/main/advertisement.interface';
 import { AdvertisementExtended } from '../model/auxiliary/advertisement-extensions.type';
-import { AdvertisementService } from './advertisement.service';
-import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
